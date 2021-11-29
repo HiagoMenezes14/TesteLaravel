@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test',\App\Http\Controllers\Controllerget::class.'@returnJson');
-Route::post('/enviar',\App\Http\Controllers\Controllerget::class.'@returnBody');
+Route::get('/test',GetController::class.'@itWorks');
+Route::get('/not-work', GetController::class. '@doesntWorks');
+Route::post('/enviar',GetController::class.'@testBody');
