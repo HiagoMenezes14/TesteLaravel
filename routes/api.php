@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GetController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/test',GetController::class.'@itWorks');
 Route::get('/not-work', GetController::class. '@doesntWorks');
 Route::post('/enviar',GetController::class.'@testBody');
+Route::post('/create-user',UserController::class.'@createUser');
