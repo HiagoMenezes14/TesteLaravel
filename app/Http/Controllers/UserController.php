@@ -1,15 +1,15 @@
-<?php  declare(strict_types=1);
+<?php 
+
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use App\Domains\Service\UserService;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\CreateUserRequest;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
     private $userService;
 
     public function __construct(UserService $userService)

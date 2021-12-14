@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Service;
 
 use App\Domains\Repositories\UserRepository;
@@ -13,9 +15,8 @@ class UserService
       $this->userRepository = $userRepository; 
     }
 
-    public function createUser(array $usuario)
+    public function createUser(array $users)
     {
-        $this->userRepository->create($usuario);
+        $this->userRepository->create($users);
     }
-
 }

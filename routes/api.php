@@ -20,7 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test',GetController::class.'@itWorks');
-Route::get('/not-work', GetController::class. '@doesntWorks');
-Route::post('/enviar',GetController::class.'@testBody');
-Route::post('/create-user',UserController::class.'@createUser');
+Route::prefix('user')->group( function() {
+    Route::get('/test',GetController::class.'@itWorks');
+    Route::get('/not-work', GetController::class. '@doesntWorks');
+    Route::post('/enviar',GetController::class.'@testBody');
+    Route::post('/create-user',UserController::class.'@createUser');
+});
+
+
+
