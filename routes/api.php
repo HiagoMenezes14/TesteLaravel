@@ -26,6 +26,3 @@ Route::prefix('user')->group( function() {
     Route::post('/enviar',GetController::class.'@testBody');
     Route::post('/create-user',UserController::class.'@createUser');
 });
-
-
-
