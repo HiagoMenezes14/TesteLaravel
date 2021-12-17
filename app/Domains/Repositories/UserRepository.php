@@ -11,14 +11,15 @@ class UserRepository extends RepositoryAbstract
 {
     protected $model = User::class;
 
-    public function model() {
+    public function model()
+    {
         return $this->model;
     }
 
-    public function getUserByEmail($email) {
+    public function getUserByEmail($email)
+    {
         return DB::table('users')
-                ->where('email', '=', $email)
-                ->first();
+            ->where('email', '=', $email)
+            ->first();
     }
-
 }

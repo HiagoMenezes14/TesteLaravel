@@ -13,29 +13,29 @@ abstract class RepositoryAbstract
      */
     protected $model;
 
-    public function createModel() : model
+    public function createModel(): model
     {
         return $this->makeModel();
     }
 
-    public function makeModel() : model
+    public function makeModel(): model
     {
         $model = app()->make($this->model);
         if (!$model instanceof Model) {
-           throw new \Exception('Model inexistente');
+            throw new \Exception('Model inexistente');
         }
         return $this->model = $model;
     }
 
-    public function create(array $attributes = []) : model
+    public function create(array $attributes = []): model
     {
         $instance = $this->makeModel();
         $instance->fill($attributes);
         $instance->save();
         return $instance;
     }
-    
-    public function createWithManualTimestamp(array $attributes = []) : model
+
+    public function createWithManualTimestamp(array $attributes = []): model
     {
         $instance = $this->makeModel();
         $instance->timestamps = false;
@@ -44,7 +44,7 @@ abstract class RepositoryAbstract
         return $instance;
     }
 
-    public function update($id, array $attributes = []) : model
+    public function update($id, array $attributes = []): model
     {
         $instance = $id instanceof Model ? $id : $this->find($id);
         if ($instance) {
@@ -54,7 +54,7 @@ abstract class RepositoryAbstract
         return $instance;
     }
 
-    public function updateWithManualTimestamp($id, array $attributes = []) : model
+    public function updateWithManualTimestamp($id, array $attributes = []): model
     {
         $instance = $id instanceof Model ? $id : $this->find($id);
         $instance->timestamps = false;
@@ -65,7 +65,7 @@ abstract class RepositoryAbstract
         return $instance;
     }
 
-    public function delete($id) : model
+    public function delete($id): model
     {
         $instance = $id instanceof Model ? $id : $this->find($id);
         if ($instance) {
@@ -74,17 +74,17 @@ abstract class RepositoryAbstract
         return $instance;
     }
 
-    public function batchDelete(array $wheres) :array
+    public function batchDelete(array $wheres): array
     {
         return $this->query()->where($wheres)->delete();
     }
 
-    public function find($id) : model
+    public function find($id): model
     {
         return $this->makeModel()::find($id);
     }
 
-    public function query() : model
+    public function query(): model
     {
         return $this->makeModel()::query();
     }
